@@ -45,7 +45,10 @@ public class LocationPopupPage extends BasicPage {
 		String value = this.getLocationItem().getAttribute("data-value");
 		js.executeScript("arguments[0].value=arguments[1]", this.getLocationInput(), value);
 		js.executeScript("arguments[0].click()", this.getSubmit());
+	}
 
+	public void closePopup() {
+		this.getCloseElement().click();
 	}
 
 }
