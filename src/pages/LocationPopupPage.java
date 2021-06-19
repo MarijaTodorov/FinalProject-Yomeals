@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LocationPopupPage extends BasicPage {
@@ -13,15 +14,16 @@ public class LocationPopupPage extends BasicPage {
 	}
 
 	public WebElement getLocationHeader() {
-		return driver.findElement(By.className("location-selector"));
+		return driver.findElement(By.xpath("//*[@class = 'location-search-wrapper']"));
 	}
 
 	public WebElement getCloseElement() {
-		return driver.findElement(By.className("close-btn-white"));
+		return waiter
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@class='close-btn close-btn-white']")));
 	}
 
 	public WebElement getKeyword() {
-		return driver.findElement(By.xpath("//*[@id='locality_keyword']"));
+		return driver.findElement(By.id("locality_keyword"));
 	}
 
 	public WebElement getLocationItem(String locationName) {
@@ -29,11 +31,11 @@ public class LocationPopupPage extends BasicPage {
 	}
 
 	public WebElement getLocationInput() {
-		return driver.findElement(By.xpath("//*[@id='location_id']"));
+		return driver.findElement(By.id("location_id"));
 	}
 
 	public WebElement getSubmit() {
-		return driver.findElement(By.xpath("//*[@name='btn_submit']"));
+		return driver.findElement(By.name("btn_submit"));
 	}
 
 	public void openPopup() {
