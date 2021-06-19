@@ -12,24 +12,20 @@ public class LoginPage extends BasicPage {
 		super(driver, js, waiter);
 	}
 
-	public WebElement getLoginWindow() {
-		return driver.findElement(By.className("filled"));
-	}
-
 	public WebElement getEmail() {
-		return driver.findElement(By.name("username"));
+		return this.driver.findElement(By.name("username"));
 	}
 
 	public WebElement getPassword() {
-		return driver.findElement(By.name("password"));
+		return this.driver.findElement(By.name("password"));
 	}
 
 	public WebElement getRememberMe() {
-		return driver.findElement(By.name("remember_me"));
+		return this.driver.findElement(By.name("remember_me"));
 	}
 
 	public WebElement getLoginBtn() {
-		return driver.findElement(By.name("btn_submit"));
+		return this.driver.findElement(By.name("btn_submit"));
 	}
 
 	public void login(String email, String password) {
@@ -37,5 +33,7 @@ public class LoginPage extends BasicPage {
 		this.getPassword().clear();
 		this.getEmail().sendKeys(email);
 		this.getPassword().sendKeys(password);
+		this.getRememberMe().click();
+		this.getLoginBtn().click();
 	}
 }
