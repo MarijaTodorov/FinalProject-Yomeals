@@ -15,4 +15,5 @@ public abstract class BasicPage {
 		this.js = js;
 		this.waiter = waiter;
 	}
+
 }
