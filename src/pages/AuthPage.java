@@ -13,15 +13,15 @@ public class AuthPage extends BasicPage {
 	}
 
 	public WebElement getAccountDropDown() {
-		return driver.findElement(By.xpath("'//div[@class=\"accounts-link accounts-popup\"]/a"));
+		return this.driver.findElement(By.xpath("'//div[@class=\"accounts-link accounts-popup\"]/a"));
 	}
 
 	public WebElement getMyAccount() {
-		return driver.findElement(By.xpath("//div[@class='my-account-dropdown']/ul/li/a"));
+		return this.driver.findElement(By.xpath("//div[@class='my-account-dropdown']/ul/li/a"));
 	}
 
 	public WebElement getLogout() {
-		return driver.findElement(By.xpath("//div[@class='my-account-dropdown']/ul/li[2]/a"));
+		return this.driver.findElement(By.xpath("//div[@class='my-account-dropdown']/ul/li[2]/a"));
 	}
 
 	public void logout() {
