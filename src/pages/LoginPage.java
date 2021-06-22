@@ -20,10 +20,6 @@ public class LoginPage extends BasicPage {
 		return this.driver.findElement(By.name("password"));
 	}
 
-	public WebElement getRememberMe() {
-		return this.driver.findElement(By.name("remember_me"));
-	}
-
 	public WebElement getLoginBtn() {
 		return this.driver.findElement(By.name("btn_submit"));
 	}
@@ -33,7 +29,6 @@ public class LoginPage extends BasicPage {
 		this.getPassword().clear();
 		this.getEmail().sendKeys(email);
 		this.getPassword().sendKeys(password);
-		this.getRememberMe().click();
 		this.getLoginBtn().click();
 	}
 }
