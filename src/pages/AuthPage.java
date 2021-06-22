@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AuthPage extends BasicPage {
@@ -13,7 +14,7 @@ public class AuthPage extends BasicPage {
 	}
 
 	public WebElement getAccountDropDown() {
-		return this.driver.findElement(By.xpath("'//div[@class=\"accounts-link accounts-popup\"]/a"));
+		return this.driver.findElement(By.xpath("//div[@class='accounts-link accounts-popup']/ul/li/a"));
 	}
 
 	public WebElement getMyAccount() {
@@ -26,6 +27,7 @@ public class AuthPage extends BasicPage {
 
 	public void logout() {
 		this.getAccountDropDown().click();
+		waiter.until(ExpectedConditions.visibilityOf(getLogout()));
 		this.getLogout().click();
 	}
 }
