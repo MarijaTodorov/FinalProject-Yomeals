@@ -26,47 +26,49 @@ public class MealItemTest extends BasicTest {
 	String cartRemoveMsg = "All meals removed from Cart successfully";
 	String cartRemoveMsgError = "[ERROR] Items have not been removed";
 
-	@Test (priority = 3)
+	@Test(priority = 3)
 	public void addMealToCart() throws InterruptedException {
-		
-		//Add meal
-		this.driver.navigate().to(baseUrl+"meal/lobster-shrimp-chicken-quesadilla-combo");
+
+		// Add meal
+		this.driver.navigate().to(baseUrl + "meal/lobster-shrimp-chicken-quesadilla-combo");
 		this.popUpPage.closePopup();
 		this.mealPage.addMealToCart(qty1);
-		Assert.assertTrue(this.notificationPage.getMessageTxt().contains(locationMsg1),this.locationMsgfail);
-		Assert.assertTrue(this.notificationPage.getMessageTxt().contains(locationMsg2),this.locationMsgfail);
+		Assert.assertTrue(this.notificationPage.getMessageTxt().contains(locationMsg1), this.locationMsgfail);
+		Assert.assertTrue(this.notificationPage.getMessageTxt().contains(locationMsg2), this.locationMsgfail);
 		this.notificationPage.waitUntilMessageDisappears();
-		
-		//Set location and add meal
+
+		// Set location and add meal
 		this.popUpPage.openPopup();
-		this.popUpPage.setLocation(locationName);		
-		
+		this.popUpPage.setLocation(locationName);
+
 		this.mealPage.addMealToCart(qty1);
 		Assert.assertTrue(this.notificationPage.getMessageTxt().contains(cartMsg), this.cartMsgFail);
 	}
-	@Test (priority = 4)
+
+	@Test(priority = 4)
 	public void addToFavorite() throws InterruptedException {
 
-		//Add to favorite	
+		// Add to favorite
 		this.driver.navigate().to(baseUrl + "meal/lobster-shrimp-chicken-quesadilla-combo");
 		this.popUpPage.closePopup();
 		this.mealPage.addToFavourite();
 
 		Assert.assertTrue(this.notificationPage.getMessageTxt().contains(favoriteMsg), this.favoriteMsgFail);
 		this.notificationPage.waitUntilMessageDisappears();
-		
-		//User login
+
+		// User login
 		this.driver.navigate().to(baseUrl + "guest-user/login-form");
 		Thread.sleep(2000);
 		this.loginPage.login(email, password);
 
-		//Add to favorite
+		// Add to favorite
 		this.driver.navigate().to(baseUrl + "meal/lobster-shrimp-chicken-quesadilla-combo");
 		this.mealPage.addToFavourite();
-		Assert.assertTrue(this.notificationPage.getMessageTxt().contains(favoriteMealMsg), this.favoriteMealMsgFail); 
+		Assert.assertTrue(this.notificationPage.getMessageTxt().contains(favoriteMealMsg), this.favoriteMealMsgFail);
 		this.notificationPage.waitUntilMessageDisappears();
 
 	}
+
 	@Test(priority = 5)
 	public void clearCart() throws InterruptedException, IOException {
 
@@ -83,7 +85,7 @@ public class MealItemTest extends BasicTest {
 
 		// Adding meals to cart
 		for (int i = 1; i < sheet.getLastRowNum(); i++) {
-			String meal= sheet.getRow(i).getCell(0).getStringCellValue();
+			String meal = sheet.getRow(i).getCell(0).getStringCellValue();
 			int qty = (int) sheet.getRow(i).getCell(1).getNumericCellValue();
 
 			this.driver.navigate().to(meal);

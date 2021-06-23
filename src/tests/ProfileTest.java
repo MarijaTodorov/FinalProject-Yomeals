@@ -50,22 +50,23 @@ public class ProfileTest extends BasicTest {
 
 	@Test(priority = 2)
 	public void changeImg() throws IOException {
-		
-		//login
+
+		// login
 		this.driver.navigate().to(baseUrl + "/guest-user/login-form");
 		this.popUpPage.closePopup();
 		this.loginPage.login(email, password);
 		Assert.assertTrue(this.notificationPage.getMessageTxt().contains(loginMsg), this.loginMsgFail);
 		this.notificationPage.waitUntilMessageDisappears();
-		
-		//Img upload
+
+		// Img upload
 		this.driver.navigate().to(baseUrl + "/member/profile");
-		String imgPath = new File("C:\\Users\\Maja\\Desktop\\Projekat\\FinalProject-Yomeals\\img\\wow.png").getCanonicalPath();
+		String imgPath = new File("C:\\Users\\Maja\\Desktop\\Projekat\\FinalProject-Yomeals\\img\\wow.png")
+				.getCanonicalPath();
 		this.profilePage.uploadImg(imgPath);
 		Assert.assertTrue(this.notificationPage.getMessageTxt().contains(imgMsg), this.imgMsgFail);
 		this.notificationPage.waitUntilMessageDisappears();
-		
-		//Img delete
+
+		// Img delete
 		this.profilePage.deleteImg();
 		Assert.assertTrue(this.notificationPage.getMessageTxt().contains(imgDelete), this.imgDeleteFail);
 		this.notificationPage.waitUntilMessageDisappears();
