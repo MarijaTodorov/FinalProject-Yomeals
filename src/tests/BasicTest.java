@@ -25,6 +25,7 @@ import pages.LoginPage;
 import pages.MealPage;
 import pages.NotificationSystemPage;
 import pages.ProfilePage;
+import pages.SearchResultPage;
 
 public abstract class BasicTest {
 
@@ -36,6 +37,7 @@ public abstract class BasicTest {
 	protected String baseUrl;
 	protected String email;
 	protected String password;
+	protected String locationName;
 
 	protected LocationPopupPage popUpPage;
 	protected LoginPage loginPage;
@@ -44,6 +46,7 @@ public abstract class BasicTest {
 	protected AuthPage authPage;
 	protected MealPage mealPage;
 	protected CartSummaryPage summaryPage;
+	protected SearchResultPage searchPage;
 
 	@BeforeMethod
 	public void setUp() throws IOException {
@@ -55,6 +58,7 @@ public abstract class BasicTest {
 		this.baseUrl = "http://demo.yo-meals.com/";
 		this.email = "customer@dummyid.com";
 		this.password = "12345678a";
+		this.locationName = "City Center - Albany";
 
 		this.popUpPage = new LocationPopupPage(driver, js, waiter);
 		this.loginPage = new LoginPage(driver, js, waiter);
@@ -63,6 +67,7 @@ public abstract class BasicTest {
 		this.authPage = new AuthPage(driver, js, waiter);
 		this.mealPage = new MealPage(driver, js, waiter);
 		this.summaryPage = new CartSummaryPage(driver, js, waiter);
+		this.searchPage = new SearchResultPage(driver, js, waiter);
 
 		this.driver.manage().window().maximize();
 		this.driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
