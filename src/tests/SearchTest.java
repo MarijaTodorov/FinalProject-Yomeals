@@ -27,7 +27,7 @@ public class SearchTest extends BasicTest {
 		this.popUpPage.setLocation(locationName);
 		Thread.sleep(1000);
 
-		for (int i = 1; i < 7; i++) {
+		for (int i = 1; i < sheet.getLastRowNum(); i++) {
 			String url = sheet.getRow(i).getCell(1).getStringCellValue();
 			this.driver.get(url);
 			Thread.sleep(3000);
