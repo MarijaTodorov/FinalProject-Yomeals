@@ -26,7 +26,7 @@ public class MealItemTest extends BasicTest {
 	String cartRemoveMsg = "All meals removed from Cart successfully";
 	String cartRemoveMsgError = "[ERROR] Items have not been removed";
 
-	@Test(priority = 3)
+	@Test(priority = 1)
 	public void addMealToCart() throws InterruptedException {
 
 		// Add meal
@@ -45,7 +45,7 @@ public class MealItemTest extends BasicTest {
 		Assert.assertTrue(this.notificationPage.getMessageTxt().contains(cartMsg), this.cartMsgFail);
 	}
 
-	@Test(priority = 4)
+	@Test(priority =3)
 	public void addToFavorite() throws InterruptedException {
 
 		// Add to favorite
@@ -69,7 +69,7 @@ public class MealItemTest extends BasicTest {
 
 	}
 
-	@Test(priority = 5)
+	@Test(priority = 2)
 	public void clearCart() throws InterruptedException, IOException {
 
 		this.driver.navigate().to(baseUrl + "meals");

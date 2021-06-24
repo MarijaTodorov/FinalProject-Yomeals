@@ -14,7 +14,7 @@ public class SearchTest extends BasicTest {
 	String numberMsg = "[ERROR] Number of products doesn't match";
 	String nameMsg = "[ERROR] Product names are different";
 
-	@Test(priority = 0)
+	@Test(priority = 1)
 	public void searchResults() throws InterruptedException, IOException {
 
 		File file = new File("data/data.xlsx");
@@ -25,6 +25,7 @@ public class SearchTest extends BasicTest {
 
 		this.driver.navigate().to(baseUrl + "meals");
 		this.popUpPage.setLocation(locationName);
+		Thread.sleep(1000);
 
 		for (int i = 1; i < 7; i++) {
 			String url = sheet.getRow(i).getCell(1).getStringCellValue();
